@@ -46,8 +46,9 @@ Abrí http://localhost:8000
 
 - **Datos de contacto, WhatsApp, redes y email:** `config/config.php`
 - **Servicios:** `app/Models/Service.php`
-- **Proyectos del portfolio:** `app/Models/Project.php` (los actuales son ejemplos).
-  Para usar capturas reales, guardalas en `public/assets/img/portfolio/` y completá `image: 'archivo.jpg'`.
+- **Proyectos del portfolio:** `app/Models/Project.php`.
+  Capturas en `public/assets/img/portfolio/` (1200×750) y logos en `public/assets/img/clients/`.
+  `logoBg` define el color de fondo de la tarjeta del logo (útil para logos blancos).
 - **Textos de Nosotros (incluye las cifras):** `app/Views/pages/about.php`
 - **Colores:** variables al inicio de `public/assets/css/style.css`
 

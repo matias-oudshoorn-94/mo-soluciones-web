@@ -16,7 +16,7 @@ final class ContactMessage
         'sistemas'      => 'Sistema de gestión',
         'seo'           => 'SEO / Posicionamiento',
         'landing'       => 'Landing page',
-        'mantenimiento' => 'Mantenimiento',
+        'hosting'       => 'Hosting, dominio y mantenimiento',
         'otro'          => 'Otro',
     ];
 
@@ -64,7 +64,7 @@ final class ContactMessage
             $this->errors['service'] = 'Elegí un servicio.';
         }
         if (text_length($this->message) < 10) {
-            $this->errors['message'] = 'Contame un poco más sobre tu proyecto (mínimo 10 caracteres).';
+            $this->errors['message'] = 'Contanos un poco más sobre tu proyecto (mínimo 10 caracteres).';
         }
 
         return $this->errors === [];

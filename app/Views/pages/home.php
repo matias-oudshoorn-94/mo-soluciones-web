@@ -2,59 +2,136 @@
 /**
  * @var list<\App\Models\Service> $services
  * @var list<\App\Models\Project> $projects
+ * @var list<\App\Models\Project> $clients
+ * @var list<array{q: string, a: string}> $faqs
+ * @var int $projectCount
  */
 use App\Core\View;
 
+// Lo que resolvemos por el cliente.
+$included = [
+    ['map',      'Dominio',            'Registramos tu .com o .com.ar y nos ocupamos de las renovaciones.'],
+    ['layers',   'Hosting',            'Servidor rápido y seguro, contratado y configurado por nosotros.'],
+    ['shield',   'Seguridad SSL',      'Certificado HTTPS, backups automáticos y actualizaciones.'],
+    ['mail',     'Emails corporativos', 'Casillas nombre@tuempresa.com listas para usar.'],
+    ['pencil',   'Diseño y desarrollo', 'Tu sitio, tienda o sistema hecho a medida.'],
+    ['building', 'Carga de contenidos', 'Textos, fotos y productos: los cargamos nosotros.'],
+    ['search',   'Alta en Google',     'Search Console, Google Business y analítica configurados.'],
+    ['clock',    'Mantenimiento',      'Cambios, soporte y monitoreo después de la entrega.'],
+];
+
 $steps = [
-    ['chat',   'Charlamos',     'Me contás tu idea, tus objetivos y tu presupuesto. Sin tecnicismos.'],
-    ['pencil', 'Propuesta',     'Te envío una propuesta clara con alcance, tiempos y costo cerrado.'],
-    ['code',   'Desarrollo',    'Diseño y programo tu proyecto con avances que podés revisar.'],
-    ['rocket', 'Lanzamiento',   'Publicamos, te capacito y te acompaño con soporte post-entrega.'],
+    ['Hoy',      'chat',   'Nos contás qué necesitás', 'Por WhatsApp, llamada o el formulario. Sin tecnicismos.'],
+    ['En 24 h',  'pencil', 'Recibís tu presupuesto',   'Precio cerrado, alcance claro y fecha de entrega concreta.'],
+    ['En días',  'code',   'Desarrollamos',            'Diseñamos y programamos con avances que podés revisar.'],
+    ['Listo',    'rocket', 'Tu web online',            'Con dominio, hosting y emails funcionando. Sin que muevas un dedo.'],
 ];
 ?>
 <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="container hero-inner">
         <div class="hero-copy">
-            <span class="eyebrow"><span class="dot"></span> Desarrollo web a medida</span>
-            <h1>Soluciones web que hacen <span class="gradient-text">crecer tu negocio</span></h1>
+            <span class="eyebrow"><span class="dot"></span> Llave en mano · Sin vueltas</span>
+            <h1>Tu web lista en días. <span class="gradient-text">Nosotros nos encargamos de todo.</span></h1>
             <p class="lead">
-                Sitios institucionales, tiendas online, sistemas de gestión y SEO.
-                Desarrollo rápido, seguro y pensado para que tus clientes te encuentren y te elijan.
+                Presupuesto en 24 horas, desarrollo rápido y nos ocupamos del dominio, el hosting, los emails y el mantenimiento.
+                Vos no tenés que hacer nada: solo contarnos qué necesitás.
             </p>
             <div class="hero-actions">
-                <a href="<?= url('/contacto') ?>" class="btn btn-primary">Pedí tu presupuesto <?= icon('arrow') ?></a>
-                <a href="<?= url('/portfolio') ?>" class="btn btn-ghost">Ver proyectos</a>
+                <a href="<?= url('/contacto') ?>" class="btn btn-primary">Presupuesto en 24 h <?= icon('arrow') ?></a>
+                <a href="<?= e(whatsapp_link('Hola! Quiero un presupuesto para mi web.')) ?>" class="btn btn-ghost" target="_blank" rel="noopener"><?= icon('whatsapp') ?> Escribinos</a>
             </div>
             <ul class="hero-points">
-                <li><?= icon('check') ?> Respuesta en 24 h</li>
-                <li><?= icon('check') ?> Presupuesto sin cargo</li>
-                <li><?= icon('check') ?> Soporte post-entrega</li>
+                <li><?= icon('check') ?> Presupuesto en 24 h</li>
+                <li><?= icon('check') ?> Entrega en días, no meses</li>
+                <li><?= icon('check') ?> Dominio y hosting incluidos</li>
             </ul>
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-            <div class="code-window">
-                <div class="preview-bar"><i></i><i></i><i></i><span>tu-proyecto.php</span></div>
-<pre><code><span class="c-k">final class</span> <span class="c-t">TuNegocio</span>
-{
-    <span class="c-k">public function</span> <span class="c-f">crecer</span>(): <span class="c-t">Resultado</span>
-    {
-        <span class="c-k">return</span> <span class="c-k">new</span> <span class="c-t">Web</span>(
-            diseño: <span class="c-s">'a medida'</span>,
-            velocidad: <span class="c-s">'⚡ rápida'</span>,
-            seo: <span class="c-k">true</span>,
-        );
-    }
-}</code></pre>
+            <div class="launch-card">
+                <div class="preview-bar"><i></i><i></i><i></i><span>tuempresa.com.ar</span></div>
+                <div class="launch-body">
+                    <p class="launch-title">Tu proyecto</p>
+                    <ul class="launch-list">
+                        <li><?= icon('check') ?> Dominio registrado</li>
+                        <li><?= icon('check') ?> Hosting y SSL configurados</li>
+                        <li><?= icon('check') ?> Emails corporativos</li>
+                        <li><?= icon('check') ?> Diseño y desarrollo</li>
+                        <li><?= icon('check') ?> Alta en Google</li>
+                        <li><?= icon('check') ?> Mantenimiento activo</li>
+                    </ul>
+                    <div class="launch-progress"><span></span></div>
+                    <p class="launch-status"><strong>¡Online!</strong> Vos no tuviste que hacer nada.</p>
+                </div>
             </div>
-            <div class="float-card fc-1"><?= icon('chart') ?><div><strong>+180%</strong><span>tráfico orgánico</span></div></div>
-            <div class="float-card fc-2"><?= icon('zap') ?><div><strong>&lt; 1 s</strong><span>tiempo de carga</span></div></div>
+            <div class="float-card fc-2"><?= icon('zap') ?><div><strong>24 h</strong><span>para tu presupuesto</span></div></div>
+            <div class="float-card fc-1"><?= icon('rocket') ?><div><strong><?= $projectCount ?> proyectos</strong><span>online y funcionando</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="clients-band" aria-labelledby="clients-title">
+    <div class="container">
+        <p class="clients-title" id="clients-title">Empresas e instituciones que confían en nosotros</p>
+        <?= View::partial('client-logos', ['clients' => $clients]) ?>
+    </div>
+</section>
+
+<section class="section section-alt" id="todo-incluido">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Todo incluido</span>
+            <h2>Vos no tenés que hacer nada</h2>
+            <p>Nos ocupamos de todo lo técnico, de principio a fin. Un solo contacto para tu web, tu dominio, tu hosting y tus emails.</p>
+        </div>
+
+        <div class="split reveal">
+            <div class="split-you">
+                <p class="split-label">Vos</p>
+                <ol class="you-steps">
+                    <li>Nos contás qué necesitás</li>
+                    <li>Aprobás el presupuesto</li>
+                    <li>Recibís tu web funcionando</li>
+                </ol>
+            </div>
+            <div class="split-us">
+                <p class="split-label">Nosotros</p>
+                <ul class="included">
+                    <?php foreach ($included as [$itemIcon, $title, $text]): ?>
+                        <li>
+                            <span class="included-icon"><?= icon($itemIcon) ?></span>
+                            <div><h3><?= e($title) ?></h3><p><?= e($text) ?></p></div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
 
 <section class="section">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Rápido de verdad</span>
+            <h2>De la idea a tu web online, en días</h2>
+            <p>Sin esperas eternas ni idas y vueltas. Sabés desde el primer día cuánto cuesta y cuándo está lista.</p>
+        </div>
+
+        <ol class="steps">
+            <?php foreach ($steps as [$when, $stepIcon, $title, $text]): ?>
+                <li class="step reveal">
+                    <span class="step-when"><?= e($when) ?></span>
+                    <span class="card-icon"><?= icon($stepIcon) ?></span>
+                    <h3><?= e($title) ?></h3>
+                    <p><?= e($text) ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+</section>
+
+<section class="section section-alt">
     <div class="container">
         <div class="section-head reveal">
             <span class="eyebrow">Servicios</span>
@@ -79,12 +156,12 @@ $steps = [
     </div>
 </section>
 
-<section class="section section-alt">
+<section class="section">
     <div class="container">
         <div class="section-head reveal">
             <span class="eyebrow">Portfolio</span>
             <h2>Proyectos recientes</h2>
-            <p>Algunos trabajos que ayudaron a mis clientes a vender más y trabajar mejor.</p>
+            <p>Sitios, tiendas y sistemas que ya están online y funcionando para nuestros clientes.</p>
         </div>
 
         <div class="grid grid-3">
@@ -99,44 +176,33 @@ $steps = [
     </div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <div class="section-head reveal">
-            <span class="eyebrow">Cómo trabajo</span>
-            <h2>Un proceso simple y transparente</h2>
-            <p>Sabés en todo momento en qué etapa está tu proyecto.</p>
-        </div>
-
-        <ol class="steps">
-            <?php foreach ($steps as $i => [$stepIcon, $title, $text]): ?>
-                <li class="step reveal">
-                    <span class="step-num"><?= $i + 1 ?></span>
-                    <span class="card-icon"><?= icon($stepIcon) ?></span>
-                    <h3><?= e($title) ?></h3>
-                    <p><?= e($text) ?></p>
-                </li>
-            <?php endforeach; ?>
-        </ol>
-    </div>
-</section>
-
 <section class="section section-alt">
     <div class="container why">
         <div class="reveal">
             <span class="eyebrow">Por qué elegirnos</span>
-            <h2>Trato directo con quien desarrolla tu proyecto</h2>
+            <h2>Rápidos, claros y con todo resuelto</h2>
             <p class="lead">
-                Sin intermediarios ni respuestas automáticas: hablás directamente con el desarrollador.
-                Eso significa decisiones más rápidas, menos malentendidos y un resultado que se ajusta a lo que necesitás.
+                Hablás directamente con quien desarrolla tu proyecto. Sin intermediarios, sin respuestas automáticas
+                y sin tener que coordinar con cinco proveedores distintos: dominio, hosting, diseño y soporte, todo en un mismo lugar.
             </p>
             <a href="<?= url('/nosotros') ?>" class="btn btn-ghost">Conocé más</a>
         </div>
         <ul class="why-list">
-            <li class="reveal"><?= icon('code') ?><div><h3>Código a medida</h3><p>Nada de plantillas pesadas: tu sitio carga rápido y es fácil de mantener.</p></div></li>
-            <li class="reveal"><?= icon('search') ?><div><h3>SEO desde el inicio</h3><p>Cada proyecto sale optimizado para buscadores.</p></div></li>
-            <li class="reveal"><?= icon('shield') ?><div><h3>Seguridad</h3><p>Buenas prácticas, HTTPS y backups para que duermas tranquilo.</p></div></li>
-            <li class="reveal"><?= icon('target') ?><div><h3>Foco en resultados</h3><p>Medimos visitas, consultas y ventas, no solo diseño.</p></div></li>
+            <li class="reveal"><?= icon('zap') ?><div><h3>Entrega rápida</h3><p>Presupuesto en 24 h y tu web lista en días, con fecha de entrega concreta.</p></div></li>
+            <li class="reveal"><?= icon('shield') ?><div><h3>Todo incluido</h3><p>Dominio, hosting, SSL, emails y mantenimiento. No tenés que contratar nada aparte.</p></div></li>
+            <li class="reveal"><?= icon('chat') ?><div><h3>Un solo contacto</h3><p>Ante cualquier cosa, nos escribís a nosotros y lo resolvemos.</p></div></li>
+            <li class="reveal"><?= icon('code') ?><div><h3>Hecho a medida</h3><p>Sitios rápidos, optimizados para Google y fáciles de mantener.</p></div></li>
         </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container faq-wrap">
+        <div class="section-head reveal">
+            <span class="eyebrow">Preguntas frecuentes</span>
+            <h2>Lo que nos suelen preguntar</h2>
+        </div>
+        <?= View::partial('faq', ['faqs' => $faqs]) ?>
     </div>
 </section>
 

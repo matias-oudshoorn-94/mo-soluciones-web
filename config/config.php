@@ -17,9 +17,9 @@ return [
 
     'contact' => [
         'email'     => 'hola@mosolucionesweb.com',
-        'phone'     => '+54 9 11 0000-0000',
-        'whatsapp'  => '5491100000000', // solo números, con código de país
-        'location'  => 'Argentina · Trabajo remoto',
+        'phone'     => '+54 9 223 504-4427',
+        'whatsapp'  => '5492235044427', // solo números: 54 + 9 + código de área sin 0 + número
+        'location'  => 'Buenos Aires, Argentina',
         'hours'     => 'Lunes a viernes · 9 a 18 h',
     ],
 

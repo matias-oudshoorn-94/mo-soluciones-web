@@ -19,8 +19,8 @@ abstract class Controller
 
         $siteName = (string) config('app.name');
         $data['meta'] = [
-            'title'       => isset($meta['title']) ? $meta['title'] . ' | ' . $siteName : $siteName . ' | Desarrollo web a medida',
-            'description' => $meta['description'] ?? 'Desarrollo de sitios institucionales, tiendas online, sistemas de gestión y SEO. Soluciones web a medida para hacer crecer tu negocio.',
+            'title'       => isset($meta['title']) ? $meta['title'] . ' | ' . $siteName : $siteName . ' | Tu web lista en días, nos encargamos de todo',
+            'description' => $meta['description'] ?? 'Sitios web, tiendas online y sistemas de gestión llave en mano. Presupuesto en 24 h, entrega en días y nos encargamos del dominio, hosting, emails y mantenimiento.',
             'canonical'   => rtrim((string) config('app.url'), '/') . App::currentPath(),
         ];
 

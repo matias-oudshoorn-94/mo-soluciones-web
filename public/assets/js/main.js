@@ -101,7 +101,7 @@
             name: 'Ingresá tu nombre.',
             email: 'Ingresá un email válido.',
             service: 'Elegí un servicio.',
-            message: 'Contame un poco más sobre tu proyecto (mínimo 10 caracteres).',
+            message: 'Contanos un poco más sobre tu proyecto (mínimo 10 caracteres).',
         };
 
         const showError = (field, text) => {

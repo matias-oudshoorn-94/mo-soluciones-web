@@ -25,7 +25,7 @@ final class ContactController extends Controller
             'preset'    => (string) ($_GET['servicio'] ?? ''),
         ], [
             'title'       => 'Contacto',
-            'description' => 'Contame sobre tu proyecto y te respondo en menos de 24 horas hábiles con una propuesta.',
+            'description' => 'Contanos sobre tu proyecto y en menos de 24 horas hábiles tenés tu presupuesto. Nos encargamos de todo: dominio, hosting y emails.',
         ]);
     }
 

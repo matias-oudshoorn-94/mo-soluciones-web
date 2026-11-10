@@ -13,7 +13,7 @@ final class ServicesController extends Controller
     {
         $this->view('services', ['services' => Service::all()], [
             'title'       => 'Servicios',
-            'description' => 'Sitios institucionales, tiendas online, sistemas de gestión, SEO, landing pages y mantenimiento web.',
+            'description' => 'Sitios institucionales, tiendas online, sistemas de gestión, SEO y landing pages. Llave en mano: dominio, hosting, emails y mantenimiento incluidos.',
         ]);
     }
 }

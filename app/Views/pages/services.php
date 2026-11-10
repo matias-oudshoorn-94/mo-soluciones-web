@@ -7,7 +7,7 @@ use App\Core\View;
     <div class="container">
         <span class="eyebrow">Servicios</span>
         <h1>Soluciones web <span class="gradient-text">a tu medida</span></h1>
-        <p class="lead">Elegí el servicio que necesitás o combinemos varios. Cada proyecto incluye diseño responsive, optimización de velocidad y SEO básico.</p>
+        <p class="lead">Elegí el servicio que necesitás o combinemos varios. Cada proyecto se entrega llave en mano: diseño responsive, dominio, hosting, emails y SEO básico incluidos.</p>
     </div>
 </section>
 
@@ -37,5 +37,5 @@ use App\Core\View;
 
 <?= View::partial('cta', [
     'title' => '¿No sabés qué servicio necesitás?',
-    'text'  => 'Contame tu situación y te recomiendo la mejor opción para tu negocio y tu presupuesto.',
+    'text'  => 'Contanos tu situación y te recomendamos la mejor opción para tu negocio. Te respondemos en menos de 24 horas.',
 ]) ?>

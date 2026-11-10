@@ -22,7 +22,7 @@ $selected = $old['service'] ?? $preset;
     <div class="container">
         <span class="eyebrow">Contacto</span>
         <h1>Hablemos de <span class="gradient-text">tu proyecto</span></h1>
-        <p class="lead">Completá el formulario y te respondo en menos de 24 horas hábiles con una propuesta a medida.</p>
+        <p class="lead">Completá el formulario o escribinos por WhatsApp. En menos de 24 horas hábiles tenés tu presupuesto, con precio cerrado y fecha de entrega.</p>
     </div>
 </section>
 
@@ -80,7 +80,7 @@ $selected = $old['service'] ?? $preset;
                 </div>
 
                 <div class="field">
-                    <label for="message">Contame sobre tu proyecto *</label>
+                    <label for="message">Contanos sobre tu proyecto *</label>
                     <textarea id="message" name="message" rows="6" required minlength="10" maxlength="3000"
                               placeholder="¿A qué se dedica tu negocio? ¿Qué te gustaría lograr? ¿Tenés una fecha en mente?" <?= $invalid('message') ?>><?= $val('message') ?></textarea>
                     <?= $err('message') ?>
@@ -92,6 +92,16 @@ $selected = $old['service'] ?? $preset;
         </div>
 
         <aside class="contact-info reveal">
+            <div class="included-box">
+                <p class="included-box-title"><?= icon('zap') ?> Presupuesto en 24 h, todo incluido</p>
+                <ul>
+                    <li><?= icon('check') ?> Dominio y hosting</li>
+                    <li><?= icon('check') ?> Emails corporativos</li>
+                    <li><?= icon('check') ?> Diseño y desarrollo</li>
+                    <li><?= icon('check') ?> Mantenimiento</li>
+                </ul>
+                <p>Vos no tenés que hacer nada.</p>
+            </div>
             <h2>Otras formas de contacto</h2>
             <ul class="contact-list">
                 <li>
