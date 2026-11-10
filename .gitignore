@@ -1,0 +1,5 @@
+/storage/messages/*
+!/storage/messages/.gitignore
+.DS_Store
+.idea/
+.vscode/

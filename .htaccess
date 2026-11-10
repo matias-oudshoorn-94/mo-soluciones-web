@@ -1,0 +1,9 @@
+# Si el hosting no permite apuntar el dominio a /public, esto redirige todo ahí
+# y bloquea el acceso directo a app/, config/ y storage/.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(app|config|storage)(/|$) - [F,L]
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
