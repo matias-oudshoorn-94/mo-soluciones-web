@@ -66,7 +66,7 @@ $steps = [
                 </div>
             </div>
             <div class="float-card fc-2"><?= icon('zap') ?><div><strong>24 h</strong><span>para tu presupuesto</span></div></div>
-            <div class="float-card fc-1"><?= icon('rocket') ?><div><strong><?= $projectCount ?> proyectos</strong><span>online y funcionando</span></div></div>
+            <div class="float-card fc-1"><?= icon('rocket') ?><div><strong>+100 proyectos</strong><span>activos y funcionando</span></div></div>
         </div>
     </div>
 </section>

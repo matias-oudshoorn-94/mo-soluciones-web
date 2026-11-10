@@ -31,8 +31,8 @@ $stack = ['PHP 8', 'JavaScript', 'HTML5', 'CSS3', 'MySQL', 'APIs REST', 'Mercado
         </div>
 
         <div class="stats reveal">
-            <div class="stat"><strong data-count="50">50</strong><span>+ proyectos entregados</span></div>
-            <div class="stat"><strong data-count="8">8</strong><span>años de experiencia</span></div>
+            <div class="stat"><strong>+<b data-count="100">100</b></strong><span>proyectos activos</span></div>
+            <div class="stat"><strong>+<b data-count="10">10</b></strong><span>años de experiencia</span></div>
             <div class="stat"><strong data-count="24">24</strong><span>h de tiempo de respuesta</span></div>
             <div class="stat"><strong data-count="100">100</strong><span>% código a medida</span></div>
         </div>
